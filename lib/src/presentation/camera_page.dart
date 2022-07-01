@@ -29,6 +29,8 @@ class CameraCamera extends StatefulWidget {
   ///permission on Android
   final bool enableAudio;
 
+  final Widget? takePhotoWidget;
+
   CameraCamera({
     Key? key,
     this.resolutionPreset = ResolutionPreset.ultraHigh,
@@ -37,6 +39,7 @@ class CameraCamera extends StatefulWidget {
     this.flashModes = FlashMode.values,
     this.enableZoom = true,
     this.enableAudio = false,
+    this.takePhotoWidget
   }) : super(key: key);
 
   @override
@@ -86,6 +89,7 @@ class _CameraCameraState extends State<CameraCamera> {
             preview: (controller) => Stack(
                   children: [
                     CameraCameraPreview(
+                      takePhotoWidget: widget.takePhotoWidget,
                       enableZoom: widget.enableZoom,
                       key: UniqueKey(),
                       controller: controller,

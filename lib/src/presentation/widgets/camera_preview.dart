@@ -9,11 +9,14 @@ class CameraCameraPreview extends StatefulWidget {
   final void Function(String value)? onFile;
   final CameraCameraController controller;
   final bool enableZoom;
+  final Widget? takePhotoWidget;
+
   CameraCameraPreview({
     Key? key,
     this.onFile,
     required this.controller,
     required this.enableZoom,
+    this.takePhotoWidget
   }) : super(key: key);
 
   @override
@@ -113,7 +116,7 @@ class _CameraCameraPreviewState extends State<CameraCameraPreview> {
                           onTap: () {
                             widget.controller.takePhoto();
                           },
-                          child: CircleAvatar(
+                          child: widget.takePhotoWidget ?? CircleAvatar(
                             radius: 30,
                             backgroundColor: Colors.white,
                           ),
